@@ -3,19 +3,97 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary-color: #2563eb;
+  --secondary-color: #4f46e5;
+  --dark-bg: #111827;
+  --darker-bg: #0f172a;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply antialiased text-gray-100 bg-[#111827];
+  }
+  
+  h1 {
+    @apply text-[2.75rem] font-normal mb-4 text-center text-white tracking-tight;
+  }
+  
+  h2 {
+    @apply text-xl font-medium mb-6 text-white tracking-tight;
+  }
+  
+  h3 {
+    @apply text-lg font-medium mb-3 text-white tracking-tight;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .search-container {
+    @apply max-w-3xl mx-auto px-4 mt-32 mb-16;
+  }
+
+  .search-input {
+    @apply w-full px-6 py-4 text-lg bg-gray-800 border border-gray-700 rounded-lg
+    focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-white
+    placeholder:text-gray-400 shadow-lg;
+  }
+
+  .url-input-container {
+    @apply relative flex items-center;
+  }
+
+  .url-icon {
+    @apply absolute left-4 text-gray-400;
+  }
+
+  .trending-section {
+    @apply max-w-7xl mx-auto px-4 py-8;
+  }
+
+  .review-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+
+  .review-card {
+    @apply bg-gray-800 rounded-lg overflow-hidden hover:shadow-xl transition-shadow
+    border border-gray-700 hover:border-gray-600;
+  }
+
+  .review-stats {
+    @apply flex justify-between items-center p-4 bg-gray-900 border-t border-gray-700;
+  }
+
+  .nav-link {
+    @apply text-gray-300 hover:text-white px-4 py-2 text-sm font-medium;
+  }
+
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors text-sm;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-700 text-white hover:bg-gray-600;
+  }
+
+  .feature-pill {
+    @apply px-4 py-2 rounded-full text-sm font-medium text-gray-300 
+    bg-gray-800 hover:bg-gray-700 transition-colors border border-gray-700;
+  }
 }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-600 rounded-full hover:bg-gray-500;
+} 
